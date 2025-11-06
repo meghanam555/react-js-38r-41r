@@ -1,0 +1,11 @@
+.online{
+    color: blue;
+    background-color: pink;
+}
+.offline{
+    color: pink;
+    background-color: blue;
+}
+.oggy{
+    color:green;
+}
