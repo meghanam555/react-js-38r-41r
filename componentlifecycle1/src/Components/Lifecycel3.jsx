@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-export class Lifecyle3 extends Component{
+export class Lifecycel3 extends Component{
     componentDidMount(){
         this.timer = setInterval(()=>{
             console.log("Timer Running")
