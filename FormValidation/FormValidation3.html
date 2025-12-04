@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        .error-message{
+            display: block;
+            font-size: 13px;
+            margin-bottom: 10px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <form onsubmit="return FormValidation()">
+        <label for="name">Name: </label>
+        <input type="text" id="name"><br><br>
+        <span id="name-error" class="error-message"></span>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password"><br><br>
+        <span id="password-error" class="error-message"></span>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email"><br><br>
+        <span id="email-error" class="error-message"></span>
+
+        <label>College:</label>
+        <textarea id="college"></textarea><br><br>
+
+        <label>Courses: </label>
+        <select id="course">
+            <option value="">====Select the course====</option>
+            <option>HTML</option>
+            <option>CSS</option>
+            <option>JS</option>
+            <option>ReactJS</option>
+        </select><br><br>
+        <span id="course-error" class="error-message"></span>
+
+        <div>
+            <input type="checkbox" id="agree">
+            <label for="agree">I agree</label><br><br>
+        </div>
+        <span id="checkbox-error" class="error-message"></span>
+
+        <input type="submit" value="Submit"><br><br>
+        <input type="reset" value="Reset">
+    </form>
+
+    <script>
+        function FormValidation(){
+            const name = document.getElementById('name').value
+            const password = document.getElementById('password').value
+            const email = document.getElementById('email').value
+            const course = document.getElementById('course').value
+            const agree = document.getElementById('agree').checked
+
+            const nameError = document.getElementById('name-error')
+            const passwordError = document.getElementById('password-error')
+            const emailError = document.getElementById('email-error')
+            const courseError = document.getElementById('course-error')
+            const checkboxError = document.getElementById('checkbox-error')
+
+            nameError.textContent = "";
+            passwordError.textContent = "";
+            emailError.textContent = "";
+            courseError.textContent = "";
+            checkboxError.textContent = "";
+
+            let isValid = true;
+            if(name === "" || name === null){
+                nameError.textContent = "User name is Mandatory"
+                isValid = false;
+            }
+            if(password === "" || password.length<=6){
+                passwordError.textContent = "Password should be more than 6 characters"
+                isValid = false;
+            }
+            if(email === "" &&  !email.includes('@')){
+                emailError.textContent = "Invalid Email Address"
+                isValid = false;
+            }
+            if(course === ""){
+                courseError.textContent = "Please Select the course"
+                isValid = false;
+            }
+            if(!agree){
+                checkboxError.textContent = "Please agree to the terms and Conditions"
+                isValid = false
+            }
+            return isValid;
+
+
+        }
+    </script>
+</body>
+</html>
